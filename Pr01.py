@@ -26,9 +26,8 @@ class Expense:
 
 
 # Helper funktions
-
 def generate_id(expenses: List[Expense]) -> int:
-    ids = {exp.id for exp in expenses} # warto uzyc set
+    ids = {exp.id for exp in expenses} 
     id = 1
     while id in ids:
         id += 1
@@ -83,14 +82,12 @@ def print_raport(expenses: List[Expense]) -> None:
         else:
             big = ''
 
-        # print(e)
         print(f'{e.id:4}  {big:^6} {e.amount:7}  {e.desc}')
     total = calculate_total(expenses)
     print('---------------------')
     print(f'TOTAL: {total}')
 
 # Click commands
-
 @click.group()
 def cli():
     pass
