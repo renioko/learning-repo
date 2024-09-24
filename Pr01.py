@@ -25,7 +25,7 @@ class Expense:
             raise ValueError('Error - you enetred a negative number')
 
 
-# funkcje pomocnicze:
+# Helper funktions
 
 def generate_id(expenses: List[Expense]) -> int:
     ids = {exp.id for exp in expenses} # warto uzyc set
@@ -52,7 +52,7 @@ def add_expense(expenses: List[Expense], amount: float, desc: str) -> List:
     return expenses
 
 
-# obsługa pliku:
+# File handling
 def save_expenses(content): #dodac arg csv=True, domyslnie false
     try:
         with open(EXPENSES, 'wb') as stream:
@@ -71,7 +71,7 @@ def load_expenses() -> List[Expense]:
             expenses = []
     return expenses
 
-# raport:
+# Raport:
 def print_raport(expenses: List[Expense]) -> None:
     print('-ID- -BIG?- -AMOUNT- --DESCRIPTION-')
     print('---- ------ -------- --------------')
@@ -89,18 +89,18 @@ def print_raport(expenses: List[Expense]) -> None:
     print('---------------------')
     print(f'TOTAL: {total}')
 
-# komendy click
+# Click commands
+
 @click.group()
 def cli():
     pass
 
-# @cli.parse_args ??
+
 @cli.command()
-@click.argument('amount', type=float, required=1) # click sam wylapuje gdyby amount nie był liczba
+@click.argument('amount', type=float, required=1) 
 @click.argument('desc', required=1)
 def add(amount: str, desc:str) -> None:
     amount = float(amount)
-    # dodac try except - i raise exception na wypadek ujemnego amount - clasa to robi
     expenses = load_expenses()
     expenses = add_expense(expenses, amount, desc)
     save_expenses(expenses)
