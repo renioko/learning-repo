@@ -25,7 +25,7 @@ class Expense:
             raise ValueError('Error - you enetred a negative number')
 
 
-# Helper funktions
+# Helper functions
 
 def generate_id(expenses: List[Expense]) -> int:
     ids = {exp.id for exp in expenses} # warto uzyc set
@@ -53,7 +53,8 @@ def add_expense(expenses: List[Expense], amount: float, desc: str) -> List:
 
 
 # File handling
-def save_expenses(content): #dodac arg csv=True, domyslnie false
+
+def save_expenses(content): 
     try:
         with open(EXPENSES, 'wb') as stream:
             pickle.dump(content, stream)
@@ -71,7 +72,8 @@ def load_expenses() -> List[Expense]:
             expenses = []
     return expenses
 
-# Raport:
+# Raport
+
 def print_raport(expenses: List[Expense]) -> None:
     print('-ID- -BIG?- -AMOUNT- --DESCRIPTION-')
     print('---- ------ -------- --------------')
@@ -83,7 +85,6 @@ def print_raport(expenses: List[Expense]) -> None:
         else:
             big = ''
 
-        # print(e)
         print(f'{e.id:4}  {big:^6} {e.amount:7}  {e.desc}')
     total = calculate_total(expenses)
     print('---------------------')
@@ -95,9 +96,8 @@ def print_raport(expenses: List[Expense]) -> None:
 def cli():
     pass
 
-
 @cli.command()
-@click.argument('amount', type=float, required=1) 
+@click.argument('amount', type=float, required=1)
 @click.argument('desc', required=1)
 def add(amount: str, desc:str) -> None:
     amount = float(amount)
