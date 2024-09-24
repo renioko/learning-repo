@@ -26,7 +26,6 @@ class Expense:
 
 
 # Helper functions
-
 def generate_id(expenses: List[Expense]) -> int:
     ids = {exp.id for exp in expenses} # warto uzyc set
     id = 1
@@ -53,7 +52,6 @@ def add_expense(expenses: List[Expense], amount: float, desc: str) -> List:
 
 
 # File handling
-
 def save_expenses(content): 
     try:
         with open(EXPENSES, 'wb') as stream:
@@ -73,7 +71,6 @@ def load_expenses() -> List[Expense]:
     return expenses
 
 # Raport
-
 def print_raport(expenses: List[Expense]) -> None:
     print('-ID- -BIG?- -AMOUNT- --DESCRIPTION-')
     print('---- ------ -------- --------------')
@@ -91,7 +88,6 @@ def print_raport(expenses: List[Expense]) -> None:
     print(f'TOTAL: {total}')
 
 # Click commands
-
 @click.group()
 def cli():
     pass
