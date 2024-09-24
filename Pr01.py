@@ -17,6 +17,7 @@ class Expense:
 
     def __str__(self) -> str:
         return f'{self.id:4} {self.amount:8}  {self.desc}'
+    
     def __repr__(self) -> str:
         return f"Expense(id:{self.id!r}, {self.amount!r}, {self.desc!r}"
     
