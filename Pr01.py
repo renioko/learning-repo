@@ -26,9 +26,13 @@ class Expense:
             raise ValueError('Error - you enetred a negative number')
 
 
+<<<<<<< HEAD
 # Helper functions
+=======
+# Helper funktions
+>>>>>>> Working
 def generate_id(expenses: List[Expense]) -> int:
-    ids = {exp.id for exp in expenses} # warto uzyc set
+    ids = {exp.id for exp in expenses} 
     id = 1
     while id in ids:
         id += 1
